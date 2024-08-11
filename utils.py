@@ -22,8 +22,8 @@ class Drop(BaseEstimator, TransformerMixin):
         
 #min_max
 class minMax(BaseEstimator, TransformerMixin):
-    def __init__(self, min_max_scaler = ['idade_aluno', 'fase','ian', 'ida', 'ieg', 
-                                         'iaa', 'ips', 'ipp', 'ipv', 'inde']):
+    def __init__(self, min_max_scaler = ['idade_aluno','ian','iaa',
+                                         'ips','ipp','inde']):
         self.min_max_scaler = min_max_scaler
     def fit(self, dados):
             return self
