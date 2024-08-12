@@ -20,8 +20,6 @@ dados = pd.read_csv('dados/csv_tratado/dados_ML.csv')
 
 st.write('## Simulador de Ponto de Virada')
 
-#escrever algum texto aqui
-
 #------------------------------------------------------------------------------------------
 
 #idade_aluno
@@ -60,8 +58,6 @@ input_inde = float(st.slider('Selecione o Inde do aluno e pressione enter',
 
 # análise do aluno:
 # adicionei features aleatórias nas colunas que vão ser dropadas na pipeline para o modelo rodar tranquilamente
-#'ida', 'ieg', 'fase', 'ipv'
-# AJUSTAR O DROP 'idade_aluno','pedra'
 
 novo_aluno = ['pm-12667', #'id_aluno'
             input_idade,
