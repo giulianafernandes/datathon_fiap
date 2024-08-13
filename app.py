@@ -53,42 +53,43 @@ input_ipv = float(st.slider('Selecione o Ipv do aluno e pressione enter',
 #inde
 input_inde = float(st.slider('Selecione o Inde do aluno e pressione enter', 
                                 step=0.001, min_value = 0.0, max_value = 10.0))
+#instituição de ensino
+input_instituicao_ensino = str(st.selectbox('Selecione a Instituição de ensino do Aluno', dados['instituicao_ensino_aluno_2020'].sort_values().unique()))
+
+# anos na instituição
+input_anos_pm_2020 = int(st.slider('Selecione há quantos anos o aluno estuda na Passos Mágicos', 0, 5))
 
 #------------------------------------------------------------------------------------------
 
 # análise do aluno:
 # adicionei features aleatórias nas colunas que vão ser dropadas na pipeline para o modelo rodar tranquilamente
 
-novo_aluno = ['pm-12667', #'id_aluno'
-            input_idade,
-            input_fase,
-            'P', #'turma' 
-            0, #target - ponto de virada
-            input_pedra,
-            input_ian,
-            #input_ida,
-            #input_ieg,
-            input_iaa,
-            input_ips,
-            input_ipp,
-            #input_ipv,
-            input_inde,
-            '2021-01-01', #'ano'
+novo_aluno = [input_idade, 
+              input_fase, 
+              'A', # input_turma
+              0, # ponto_de_virada 
+              input_pedra,
+              input_ian, 
+              input_ida, 
+              input_ieg, 
+              input_iaa, 
+              input_ips, 
+              input_ipp, 
+              input_ipv, 
+              input_inde,
+              input_instituicao_ensino,
+              input_anos_pm_2020
             ]
 
 #------------------------------------------------------------------------------------------
     
 # separando dados de treino e teste
-def split_dados(df, test_size):
-    SEED = np.random.seed(42)
-    dados_treino, dados_teste = train_test_split(df, test_size=test_size, random_state=SEED)
-    return dados_treino.reset_index(drop=True), dados_teste.reset_index(drop=True)
-
-dados_treino, dados_teste = split_dados(dados, 0.2)
+from sklearn.model_selection import train_test_split
+SEED = np.random.seed(42)
+dados_treino, dados_teste = train_test_split(dados, test_size=0.2, random_state=SEED)
 
 #criando df de novo aluno
 novo_aluno_df = pd.DataFrame([novo_aluno], columns=dados.columns)
-# novo_aluno_df.to_csv('novo_aluno.csv', index=False)
 
 #concatenando
 dados_e_novo_aluno = pd.concat([dados_teste, novo_aluno_df], ignore_index=True)
@@ -114,14 +115,12 @@ pv_predito = dados_e_novo_aluno.drop(['ponto_de_virada'], axis=1)
 
 #------------------------------------------------------------------------------------------
 if st.button('enviar'):
-    modelo = joblib.load('modelo/gradient_boosting.joblib')
+    modelo = joblib.load('modelo/random_forest.joblib')
     predicao = modelo.predict(pv_predito)
     if predicao[-1] == 1:
         st.write('### Este aluno está apto a atingir o Ponto de Virada')
     else:
         st.error('### Este aluno vai ter dificuldades em atingir o Ponto de Virada')
-
-#pedra?????
 
 
 #with tab4:

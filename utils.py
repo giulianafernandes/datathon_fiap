@@ -6,7 +6,7 @@ from imblearn.over_sampling import SMOTE
 # classes
 #drop features
 class Drop(BaseEstimator, TransformerMixin):
-    def __init__(self, atr_drop = ['ano', 'id_aluno', 'turma']):
+    def __init__(self, atr_drop = ['turma','idade_aluno']):
         self.atr_drop = atr_drop
     def fit(self, dados):
         return self
@@ -20,8 +20,8 @@ class Drop(BaseEstimator, TransformerMixin):
         
 #min_max
 class minMax(BaseEstimator, TransformerMixin):
-    def __init__(self, min_max_scaler = ['idade_aluno','ian','iaa',
-                                         'ips','ipp','inde']):
+    def __init__(self, min_max_scaler = ['ian', 'ida', 'ieg', 'iaa', 'ips', 
+                                         'ipp', 'ipv', 'inde', 'anos_pm_2020']):
         self.min_max_scaler = min_max_scaler
     def fit(self, dados):
             return self
@@ -36,7 +36,7 @@ class minMax(BaseEstimator, TransformerMixin):
         
 #onehot
 class OneHot(BaseEstimator, TransformerMixin):
-    def __init__(self, onehotenc = ['pedra']):
+    def __init__(self, onehotenc = ['instituicao_ensino_aluno_2020','pedra']):
         self.onehotenc = onehotenc
     def fit(self, dados):
         return self
@@ -61,7 +61,7 @@ class OneHot(BaseEstimator, TransformerMixin):
             return dados
         
         else:
-            print('problema no one_hot')
+            print('Uma ou mais features não estão no Dataframe')
             return dados
 
 #ordinalfeature
