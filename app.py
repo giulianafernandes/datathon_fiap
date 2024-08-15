@@ -116,8 +116,7 @@ with tab2:
 
     #concatenando
     dados_e_novo_aluno = pd.concat([dados_teste, novo_aluno_df], ignore_index=True)
-    
-    dados_e_novo_aluno.to_csv('novo_aluno.csv', index=False)
+    #dados_e_novo_aluno.to_csv('novo_aluno.csv', index=False)
 
     #------------------------------------------------------------------------------------------
     #Pipeline
