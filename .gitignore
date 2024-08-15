@@ -2,3 +2,4 @@
 dados/Base de dados - Passos Mágicos
 .gitattributes
 requ.txt
+__pycache__
