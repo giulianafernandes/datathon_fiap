@@ -1,7 +1,6 @@
 import pandas as pd 
 from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.preprocessing import MinMaxScaler, OneHotEncoder, OrdinalEncoder
-from imblearn.over_sampling import SMOTE
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 
 # classes
 #drop features
