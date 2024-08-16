@@ -25,6 +25,9 @@ st.markdown('Em 2016, depois de anos de atuação, decidem ampliar o programa pa
 
 st.link_button('Passos Mágicos, acesso em 10 de agosto de 2024', 'https://passosmagicos.org.br/')
 
+video_url = 'https://www.youtube.com/watch?v=hT_jOmLzpH4'
+st.video(video_url)
+
 #------------------------------------------------------------------------------------------
 #TABS
 tab1, tab2, tab3 = st.tabs(['Simulador de Ponto de Virada', 'Dashboard', 'Info'])

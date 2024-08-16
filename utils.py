@@ -48,7 +48,6 @@ class OneHot(BaseEstimator, TransformerMixin):
             return dados
         
 # minmax
-
 class minMax(BaseEstimator, TransformerMixin):
     def __init__(self, min_max_scaler = ['idade_aluno','ian', 'ida', 'ieg', 'iaa', 'ips', 'ipp', 
                                          'ipv', 'inde', 'anos_pm_2020']):
